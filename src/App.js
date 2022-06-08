@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import { FirstPage } from './Pages'
+import { Routes, Route, Link } from 'react-router-dom'
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <main className='main-app'>
+        <FirstPage />
+        {/* <audio controls>
+        <source src='https://connectloaded.com/tag/doja-cat/' />
+      </audio> */}
+      </main>
+      <div className='not-availabe'>
+        <h3>Opps!</h3>
+        <p>Sorry, This is only available on small screen</p>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
