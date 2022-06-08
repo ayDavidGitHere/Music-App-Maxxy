@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Howl, Howler } from 'howler'
+// const { Howl, Howler } = require('howler')
 import styled from 'styled-components'
 import { BgStars, Astro } from '../Assets'
 import { TbRocket } from 'react-icons/tb'
 import { HiArrowRight } from 'react-icons/hi'
+import { musicData } from '../Data/data'
 import { Routes, Route, Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { playMusic } from '../Features/eventReducer'
 // HiArrowRight
 // TbRocket
+
 const FirstPage = () => {
+  const dispatch = useDispatch()
+
   return (
-    <Wrapper>
-      {/* <img src='../Assets/DOJA FIRST.jpg' alt="" /> */}
+    <Wrapper className='main-first-page'>
       <div className='first-page-section'>
-        <img src={BgStars} alt='stars' className='bg-img' />
         <img src={Astro} alt='Astronaunt' className='img-man' />
+        <audio>
+          <source src='https://www.computerhope.com/jargon/m/example.mp3' />
+        </audio>
         <div className='first-page-details'>
           <span>Hi,</span>
           <span>Welcome to</span>
           <span>
-            <h3>Doja World </h3>
-            <TbRocket className='rocket' />
+            <h3>DOJA WORLD </h3>
+            {/* <TbRocket className='rocket' /> */}
           </span>
         </div>
         <div className='nav-container'>
@@ -38,7 +47,7 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: center;
     font-family: 'Audiowide', cursive;
-    background: var(--bg-main);
+    // background: var(--bg-main);
     color: var(--white-color);
     padding: 2rem;
   }
@@ -48,24 +57,35 @@ const Wrapper = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
+    z-index: -1;
   }
 
   .img-man {
     height: 100px;
     width: 200px;
     object-fit: cover;
+    position: relative;
+    animation-name: astro;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  @keyframes astro {
+    0% {
+      transform: translateY(-50px);
+      transform: translateX(-30px);
+    }
+    100% {
+      transform: translateY(10px);
+      transform: translateX(0);
+    }
   }
 
   .first-page-details {
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
-    // background: rgb(180, 113, 226);
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(180, 113, 226, 1) 0%,
-    //   rgba(128, 193, 213, 1) 61%
-    // );
   }
 
   span {
@@ -96,7 +116,6 @@ const Wrapper = styled.section`
     );
     font-size: 1.3em;
     cursor: pointer;
-    user-select: none;
   }
 `
 
