@@ -23,17 +23,19 @@ const FirstPage = () => {
           <source src='https://www.computerhope.com/jargon/m/example.mp3' />
         </audio>
         <div className='first-page-details'>
-          <span>Hi,</span>
-          <span>Welcome to</span>
+          <span>
+            <p>Hi,✨</p>
+          </span>
+          <span>
+            <p>Welcome to</p>
+          </span>
           <span>
             <h3>DOJA WORLD </h3>
-            {/* <TbRocket className='rocket' /> */}
           </span>
         </div>
         <div className='nav-container'>
           <HiArrowRight />
         </div>
-        <img src={Moon} alt='moon' className='moon-img' />
       </div>
     </Wrapper>
   )
@@ -92,11 +94,19 @@ const Wrapper = styled.section`
 
   span {
     margin: 0.3rem;
-    font-size: 2em;
+    font-size: 1.4em;
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
+  }
+
+  p {
+    opacity: 0.8;
+  }
+
+  h3 {
+    font-size: 1.5em;
   }
 
   .rocket {
@@ -119,15 +129,7 @@ const Wrapper = styled.section`
     );
     font-size: 1.3em;
     cursor: pointer;
-    margin-bottom: 5rem;
-    margin-top: -1rem;
-  }
-
-  .moon-img {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
+    margin-bottom: 2rem;
   }
 `
 
