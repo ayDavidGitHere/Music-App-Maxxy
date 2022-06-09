@@ -57,7 +57,7 @@ body {
     top: 0;
     z-index: 100;
     animation-name: slideIn;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-direction: forwards;
     animation-fill-mode: forwards;
     opacity: 1;
