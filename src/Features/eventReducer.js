@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  isPlaying: false,
+  toNextPage: false,
 }
 
 const eventSlice = createSlice({
   name: 'eventSlice',
   initialState,
   reducers: {
-    playMusic: (state, action) => {
-      console.log('true')
-      alert('true')
+    moveToMainPage: (state) => {
+      state.toNextPage = true
     },
   },
 })
 
-export const { playMusic } = eventSlice.actions
+export const { moveToMainPage } = eventSlice.actions
 export default eventSlice.reducer

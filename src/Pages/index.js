@@ -1,4 +1,4 @@
-import IntroPage from './Intro'
 import FirstPage from './FirstPage'
+import SlidePage from './SlideInPage'
 
-export { IntroPage, FirstPage }
+export { FirstPage, SlidePage }

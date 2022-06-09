@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react'
-import { Howl, Howler } from 'howler'
-// const { Howl, Howler } = require('howler')
+import React from 'react'
 import styled from 'styled-components'
-import { BgStars, Astro, Moon } from '../Assets'
-import { TbRocket } from 'react-icons/tb'
+import { Astro } from '../Assets'
 import { HiArrowRight } from 'react-icons/hi'
-import { musicData } from '../Data/data'
-import { Routes, Route, Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { playMusic } from '../Features/eventReducer'
-// HiArrowRight
-// TbRocket
+// import { Routes, Route, Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { moveToMainPage } from '../Features/eventReducer'
 
 const FirstPage = () => {
   const dispatch = useDispatch()
@@ -33,7 +27,10 @@ const FirstPage = () => {
             <h3>DOJA WORLD </h3>
           </span>
         </div>
-        <div className='nav-container'>
+        <div
+          className='nav-container'
+          onClick={() => dispatch(moveToMainPage())}
+        >
           <HiArrowRight />
         </div>
       </div>
@@ -130,6 +127,7 @@ const Wrapper = styled.section`
     font-size: 1.3em;
     cursor: pointer;
     margin-bottom: 2rem;
+    user-select: none;
   }
 `
 
