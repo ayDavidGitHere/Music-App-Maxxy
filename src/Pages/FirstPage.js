@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Howl, Howler } from 'howler'
 // const { Howl, Howler } = require('howler')
 import styled from 'styled-components'
-import { BgStars, Astro } from '../Assets'
+import { BgStars, Astro, Moon } from '../Assets'
 import { TbRocket } from 'react-icons/tb'
 import { HiArrowRight } from 'react-icons/hi'
 import { musicData } from '../Data/data'
@@ -33,6 +33,7 @@ const FirstPage = () => {
         <div className='nav-container'>
           <HiArrowRight />
         </div>
+        <img src={Moon} alt='moon' className='moon-img' />
       </div>
     </Wrapper>
   )
@@ -85,6 +86,7 @@ const Wrapper = styled.section`
   .first-page-details {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 3rem;
   }
 
@@ -94,6 +96,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-align: center;
   }
 
   .rocket {
@@ -116,6 +119,15 @@ const Wrapper = styled.section`
     );
     font-size: 1.3em;
     cursor: pointer;
+    margin-bottom: 5rem;
+    margin-top: -1rem;
+  }
+
+  .moon-img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
   }
 `
 
