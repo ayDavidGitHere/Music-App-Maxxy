@@ -1,10 +1,25 @@
-import React from 'react'
-import { FirstPage, SlidePage } from './Pages'
+import React, { useEffect } from 'react'
+import {
+  FirstPage,
+  SlidePage,
+  HomePage,
+  ExplorePage,
+  LikesPage,
+  SearchPage,
+  NavSection,
+  MusicPage,
+} from './Pages'
 import { useSelector, useDispatch } from 'react-redux'
-
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import { getRecommendList } from './Features/effectReducer'
 const App = () => {
+  const { musicList } = useSelector((store) => store.effectSlice)
   const { toNextPage } = useSelector((store) => store.eventSlice)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getRecommendList())
+  }, [musicList])
   return (
     <React.Fragment>
       <main className='main-app'>
@@ -13,7 +28,14 @@ const App = () => {
         ) : (
           <section className='main-app-section'>
             <SlidePage />
-            <p>go</p>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/explore' element={<ExplorePage />} />
+              <Route path='/likes' element={<LikesPage />} />
+              <Route path='/search' element={<SearchPage />} />
+              <Route path='/music/:id' element={<MusicPage />} />
+            </Routes>
+            <NavSection />
           </section>
         )}
       </main>
