@@ -42,8 +42,13 @@ const eventSlice = createSlice({
     setSong: (state, action) => {
       state.currentSong = action.payload
     },
+    setAudio: (state, action) => {
+      state.currentAudio = new Audio(action.payload)
+    },
+       
   },
 })
 
-export const { moveToMainPage, setSong, togglePlay } = eventSlice.actions
+
+export const { moveToMainPage, setSong, togglePlay, setAudio } = eventSlice.actions
 export default eventSlice.reducer
