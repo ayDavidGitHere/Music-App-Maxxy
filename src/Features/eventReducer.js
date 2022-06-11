@@ -43,7 +43,7 @@ const eventSlice = createSlice({
       state.currentSong = action.payload
     },
     setAudio: (state, action) => {
-      state.currentAudio = new Audio(action.payload)
+      state.currentAudio = new Audio(state.currentSong)
     },
        
   },
