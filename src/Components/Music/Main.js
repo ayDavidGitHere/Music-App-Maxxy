@@ -37,7 +37,7 @@ const Main = () => {
 
   const [music, setMusic] = useState(0)
   // var audio = new Audio(songUrl)
-  const playSong = () => { alert(songIsPlaying);
+  const playSong = () => { alert(songIsPlaying); alert(currentAudio);
     if (songIsPlaying && currentAudio != null) {
       alert("song is playing");
       currentAudio.pause()
