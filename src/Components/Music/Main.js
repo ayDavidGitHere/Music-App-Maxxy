@@ -6,7 +6,7 @@ import { BiShuffle } from 'react-icons/bi'
 import { FaPlay, FaPause, FaSnowflake } from 'react-icons/fa'
 import { CgPlayTrackNext, CgPlayTrackPrev } from 'react-icons/cg'
 import { useSelector, useDispatch } from 'react-redux'
-import { togglePlay, setSong } from '../../Features/eventReducer'
+import { togglePlay, setSong, setAudio } from '../../Features/eventReducer'
 // IoRepeat
 // BiShuffle
 // FaPlay
@@ -16,7 +16,7 @@ import { togglePlay, setSong } from '../../Features/eventReducer'
 // IoIosArrowUp
 const Main = () => {
   const { musicList } = useSelector((store) => store.effectSlice)
-  let { songIsPlaying, currentSong, currentAudio } = useSelector(
+  const { songIsPlaying, currentSong, currentAudio } = useSelector(
     (store) => store.eventSlice
   )
 
@@ -37,13 +37,13 @@ const Main = () => {
 
   const [music, setMusic] = useState(0)
   // var audio = new Audio(songUrl)
-  const playSong = () => { alert(songIsPlaying); alert(currentAudio);
+  const playSong = () => { 
+    alert(songIsPlaying); alert(currentAudio);
     if (songIsPlaying && currentAudio != null) {
       alert("song is playing");
       currentAudio.pause()
     }
-    currentAudio = new Audio(currentSong)
-
+    setAudio(currentSong);
     currentAudio.play()
   }
 
