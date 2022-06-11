@@ -16,7 +16,7 @@ import { togglePlay, setSong } from '../../Features/eventReducer'
 // IoIosArrowUp
 const Main = () => {
   const { musicList } = useSelector((store) => store.effectSlice)
-  const { songIsPlaying, currentSong } = useSelector(
+  const { songIsPlaying, currentSong, currentAudio } = useSelector(
     (store) => store.eventSlice
   )
 
