@@ -25,6 +25,7 @@ const Main = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    alert("order setMusicDetails");
     const getSongDetails = musicList.find((value) => value.id === +id)
     setMusicDetails(getSongDetails)
   }, [id])
@@ -32,6 +33,7 @@ const Main = () => {
   const { title, artists, songUrl } = musicDetails
 
   useEffect(() => {
+    alert("order setAudio");
     if(currentAudio!='') currentAudio.pause();
     dispatch(setSong(songUrl));
     dispatch(setAudio(currentSong));
@@ -47,6 +49,7 @@ const Main = () => {
   }
 
   useEffect(() => {
+    alert("order playSong");
     playSong()
     // const audio = new Audio(songUrl)
     // let pause = audio.pause()
