@@ -37,6 +37,7 @@ const Main = () => {
     if(currentAudio!='') currentAudio.pause();
     dispatch(setSong(songUrl));
     dispatch(setAudio(currentSong));
+    playSong();
   }, [id, songUrl])
 
   const [music, setMusic] = useState(0)
