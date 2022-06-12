@@ -45,7 +45,7 @@ const Main = () => {
       currentAudio.pause()
     }
     dispatch(setAudio(currentSong));
-    if (currrentAudio != ''){ 
+    if (currentAudio != ''){ 
       currentAudio.play(); 
     }
     alert(currentAudio);
