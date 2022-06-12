@@ -32,7 +32,7 @@ const Main = () => {
   const { title, artists, songUrl } = musicDetails
 
   useEffect(() => {
-    if(currentAudio!=null) currentAudio.pause();
+    if(currentAudio!='') currentAudio.pause();
     dispatch(setSong(songUrl));
     dispatch(setAudio(currentSong));
   }, [id, songUrl])
