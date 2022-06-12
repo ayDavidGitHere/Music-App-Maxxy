@@ -45,7 +45,7 @@ const Main = () => {
     }
     setAudio(currentSong);
     currentAudio.play();*/
-    setAudio(currentSong);
+    dispatch(setAudio(currentSong));
     alert(currentAudio);
   }
 
