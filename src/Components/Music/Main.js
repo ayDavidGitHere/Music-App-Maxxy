@@ -38,13 +38,16 @@ const Main = () => {
   const [music, setMusic] = useState(0)
   // var audio = new Audio(songUrl)
   const playSong = () => { 
-    alert("songIsPlaying: "+songIsPlaying); alert(currentAudio);
-    if (songIsPlaying && currentAudio != '') {
+    alert("songIsPlaying: "+songIsPlaying); 
+    alert(currentAudio);
+    if (currentAudio != '' && songIsPlaying) {
       alert("song is playing");
       currentAudio.pause()
     }
     dispatch(setAudio(currentSong));
-    if(currrentAudio != '') currentAudio.play();
+    if (currrentAudio != ''){ 
+      currentAudio.play(); 
+    }
     alert(currentAudio);
   }
 
