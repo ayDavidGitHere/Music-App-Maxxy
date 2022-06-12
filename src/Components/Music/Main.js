@@ -46,6 +46,7 @@ const Main = () => {
     setAudio(currentSong);
     currentAudio.play();*/
     setAudio(currentSong);
+    alert(currentAudio);
   }
 
   useEffect(() => {
