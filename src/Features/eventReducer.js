@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 const initialState = {
   toNextPage: true,
   currentSong: '',
-  currentAudio: null,
+  currentAudio: '',
   songIsPlaying: false,
 }
 
