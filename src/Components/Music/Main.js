@@ -32,19 +32,14 @@ const Main = () => {
   const { title, artists, songUrl } = musicDetails
 
   useEffect(() => {
-    dispatch(setSong(songUrl))
+    if(currentAudio!=null) currentAudio.pause();
+    dispatch(setSong(songUrl));
+    dispatch(setAudio(currentSong));
   }, [id, songUrl])
 
   const [music, setMusic] = useState(0)
   // var audio = new Audio(songUrl)
-  const playSong = () => { 
-    alert("songIsPlaying: "+songIsPlaying); 
-    alert(currentAudio);
-    if (currentAudio != '' && songIsPlaying) {
-      alert("song is playing");
-      currentAudio.pause()
-    }
-    dispatch(setAudio(currentSong));
+  const playSong = () => {
     if (currentAudio != ''){ 
       currentAudio.play(); 
     }
