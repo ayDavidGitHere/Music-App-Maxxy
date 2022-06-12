@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FiSearch } from 'react-icons/fi'
 import { DojaFirst } from '../../Assets'
-// FiSearch
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 const HomeHeader = () => {
+  const { musicList } = useSelector((store) => store.effectSlice)
+  const [randomSong, setRandomSong] = useState(0)
+
+  useEffect(() => {
+    const random = Math.floor(Math.random() * musicList.length)
+    setRandomSong(random)
+  }, [])
   return (
     <Wrapper>
       <div className='home-header'>
@@ -19,7 +27,9 @@ const HomeHeader = () => {
         </div>
         <div className='intro-container'>
           <h2>Listen to the best of Doja Cat</h2>
-          <button type='button'>Start Now</button>
+          <Link to={`/music/${randomSong}`}>
+            <button type='button'>Start Now</button>
+          </Link>
         </div>
       </div>
     </Wrapper>
@@ -83,7 +93,7 @@ const Wrapper = styled.div`
     font-size: 1.3em;
   }
 
-  button {
+  a > button {
     background: var(--btn-color);
     border: none;
     border-radius: 10px;

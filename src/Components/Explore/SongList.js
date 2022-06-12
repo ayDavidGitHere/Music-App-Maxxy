@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TbDotsVertical } from 'react-icons/tb'
+import { Link } from 'react-router-dom'
+
 // TbDotsVertical
 const SongList = ({ image, artists, title, id }) => {
   return (
     <Wrapper>
       <div className='song-list'>
         <div className='image-desc'>
-          <img src={image} alt={title} />
+          <Link to={`/music/${id}`}>
+            <img src={image} alt={title} />
+          </Link>
           <div className='song-desc'>
             <h4>{title}</h4>
             <p>{artists}</p>
@@ -39,7 +43,7 @@ const Wrapper = styled.div`
     align-items: center;
   }
 
-  img {
+  a > img {
     width: 70px;
     height: 100%;
     border-radius: 10px;

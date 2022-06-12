@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import RecommendList from './RecommendList'
 import { useSelector, useDispatch } from 'react-redux'
+
 const RecommendMain = () => {
   const { recommendList } = useSelector((store) => store.effectSlice)
   return (

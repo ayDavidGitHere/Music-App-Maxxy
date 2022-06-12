@@ -2,6 +2,7 @@ import React from 'react'
 import List from './RecentlyPlayedList'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const RecentlyPlayed = () => {
   const { recentlyPlayed } = useSelector((store) => store.effectSlice)
@@ -14,7 +15,9 @@ const RecentlyPlayed = () => {
         </div>
         <div className='recent-container'>
           {recentlyPlayed ? (
-            <button type='button'>✨Explore World</button>
+            <Link to='/explore'>
+              <button type='button'>✨Explore World</button>
+            </Link>
           ) : (
             <div>item list</div>
           )}
@@ -56,7 +59,15 @@ const Wrapper = styled.article`
     justify-content: center;
   }
 
-  button {
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a > button {
     background: rgb(180, 113, 226);
     background: linear-gradient(
       90deg,

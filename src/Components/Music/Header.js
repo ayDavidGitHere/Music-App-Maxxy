@@ -16,7 +16,7 @@ const Header = () => {
     setMusicItem(getSongDetails)
   }, [id])
 
-  const { image, title } = musicItem
+  const { image, title, recommended } = musicItem
 
   return (
     <Wrapper>
@@ -25,7 +25,7 @@ const Header = () => {
           <Link to='/'>
             <BiChevronLeft className='icon' />
           </Link>
-          <h3>Song</h3>
+          <h3>{recommended ? 'Recommended' : 'Song'}</h3>
           <TbDotsVertical className='icon' />
         </div>
         <div className='image-container'>

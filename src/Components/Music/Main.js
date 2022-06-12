@@ -1,35 +1,94 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom'
-import { IoMdRepeat } from 'react-icons/io'
+import { IoMdRepeat, IoIosArrowUp } from 'react-icons/io'
 import { BiShuffle } from 'react-icons/bi'
-import { FaPlay, FaPause } from 'react-icons/fa'
+import { FaPlay, FaPause, FaSnowflake } from 'react-icons/fa'
 import { CgPlayTrackNext, CgPlayTrackPrev } from 'react-icons/cg'
 import { useSelector, useDispatch } from 'react-redux'
+import { togglePlay, setSong } from '../../Features/eventReducer'
 // IoRepeat
 // BiShuffle
 // FaPlay
 // FaPause
 // CgPlayTrackNext
 // CgPlayTrackPrev
+// IoIosArrowUp
 const Main = () => {
   const { musicList } = useSelector((store) => store.effectSlice)
+  const { songIsPlaying, currentSong } = useSelector(
+    (store) => store.eventSlice
+  )
+
   const [musicDetails, setMusicDetails] = useState([])
   const { id } = useParams()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getSongDetails = musicList.find((value) => value.id === +id)
     setMusicDetails(getSongDetails)
   }, [id])
 
-  const { title, artists } = musicDetails
+  const { title, artists, songUrl } = musicDetails
+
+  useEffect(() => {
+    dispatch(setSong(songUrl))
+  }, [id, songUrl])
+
+  const [music, setMusic] = useState(0)
+  // var audio = new Audio(songUrl)
+  let currentAudio = null
+  const playSong = () => {
+    if (songIsPlaying && currentAudio !== null) {
+      currentAudio.pause()
+    }
+    currentAudio = new Audio(currentSong)
+
+    currentAudio.play()
+  }
+
+  useEffect(() => {
+    playSong()
+    // const audio = new Audio(songUrl)
+    // let pause = audio.pause()
+    // if (songIsPlaying) {
+    //   setMusic(music + 1)
+    //   if (music === 0) {
+    //     audio.play()
+    //   }
+    // }
+
+    // if (!songIsPlaying) {
+    //   if (pause !== undefined) {
+    //     pause.then(() => {
+    //       audio.pause()
+    //     })
+    //   }
+    // }
+    // if (songIsPlaying) {
+    //   audio.play()
+    //   // if (promiseAudio !== undefined) {
+    //   //   promiseAudio
+    //   //     .then(() => {
+    //   //       audio.play()
+    //   //     })
+    //   //     .catch(() => {
+    //   //       console.log('error')
+    //   //     })
+    //   // }
+    // } else {
+    //   audio.pause()
+    //   console.log('pause')
+    // }
+  }, [songIsPlaying])
+
   return (
     <Wrapper>
       <div className='main-music-section'>
         <h2>{title}</h2>
         <p>{artists}</p>
         <div className='range-container'>
-          <input type='range' />
+          <input type='range' defaultValue='0' />
           <div className='time-stamp'>
             <p>0:00</p>
             <p>3:24</p>
@@ -39,12 +98,16 @@ const Main = () => {
           <IoMdRepeat />
           <div className='navigation-controls'>
             <CgPlayTrackPrev />
-            <div className='toggle-play'>
-              <FaPause />
+            <div className='toggle-play' onClick={() => dispatch(togglePlay())}>
+              {songIsPlaying ? <FaPause /> : <FaPlay />}
             </div>
             <CgPlayTrackNext />
           </div>
           <BiShuffle />
+        </div>
+        <div className='music-footer'>
+          <IoIosArrowUp />
+          <p>Songs</p>
         </div>
       </div>
     </Wrapper>
@@ -119,8 +182,14 @@ const Wrapper = styled.article`
     background: var(--btn-color);
     font-size: 0.8em;
     cursor: pointer;
-
     margin: 2rem;
+  }
+
+  .music-footer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `
 
